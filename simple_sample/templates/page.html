@@ -1,0 +1,53 @@
+{# -*-jinja2-*- #}
+{% extends "layout.html" %}
+{% block content %}
+
+<h1>{{post.title}}</h1>
+{{post.date}}
+{% if post.sub_index_pages | length > 0 %}
+<hr/>
+<b id="up_head"> Unterseiten:  </b>
+<ul class="nav flex-column flex-sm-row " labeledby="up_head">
+  {% for d in post.sub_index_pages %}
+  <li class="nav-item">
+    <a href="{{d.url}}" class="nav-link">
+      <h6> {{d.title}} <small class="text-muted">{{d.desc}} </small> </h6>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{{ post.helloworld() }}
+{{ post.html|safe }}
+
+
+{% if post.sub_pages |length > 0 %}
+<ul class="nav flex-column flex-sm-row" labeledby="inf_head">
+  {% for d in post.sub_pages %}
+    <li class="nav-item">
+      <a href="{{d.url}}" class="nav-link  text-info">
+	<h6> {{d.title}} <small class="text-muted">{{d.desc}} </small>
+	</h6>
+    </a>
+      
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% if post.list_files |length > 0 %}
+
+<hr/>
+
+<b id="inf_head">Files:</b>
+<ul>
+  {% for d in post.list_files %}
+    <li>
+      <a href="{{d.url}}">{{d}} </a>
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{# -*-jinja2-*- #}
+<html>
+  <head></head>
+  <LINK href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <nav class="breadcrumb" style="background-color: #FFF">
+{% for b in post.breadcrumbs %}
+<a href="{#url_for('page',name=b.path)#}{{b.url}}" class="breadcrumb-item">{{b.title}} </a>
+{% endfor %}
+
+      </nav>
+
+      {% block content %}
+      {% endblock %}
+
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

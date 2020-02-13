@@ -1,0 +1,6 @@
+pages_root: 'data_sample'
+static_root: 'static'
+default_template: 'page.html'
+url_prefix: "/stuff"
+FLATPAGES_EXTENSION: ".md"
+FLATPAGES_AUTO_RELOAD: True

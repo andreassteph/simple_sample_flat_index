@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI Simple Sample for Flat Page with Index Default
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/srv/simple_sample_flat_index
+Environment="PATH=/srv/simple_sample_flat_index/.env/bin"
+ExecStart=uwsgi --ini uwsgi.ini
+
+[Install]
+WantedBy=multi-user.target

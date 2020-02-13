@@ -1,0 +1,6 @@
+flask
+Frozen-Flask
+config
+uwsgi
+gevent
+
