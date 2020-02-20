@@ -1,14 +1,15 @@
 {# -*-jinja2-*- #}
 {% extends "layout.html" %}
+
 {% block content %}
 
 <h1>{{post.title}}</h1>
 {{post.date}}
-{% if post.sub_index_pages | length > 0 %}
+{% if post.links["subindexpages"] | length > 0 %}
 <hr/>
 <b id="up_head"> Unterseiten:  </b>
 <ul class="nav flex-column flex-sm-row " labeledby="up_head">
-  {% for d in post.sub_index_pages %}
+  {% for d in post.links["subindexpages"] %}
   <li class="nav-item">
     <a href="{{d.url}}" class="nav-link">
       <h6> {{d.title}} <small class="text-muted">{{d.desc}} </small> </h6>
@@ -18,11 +19,10 @@
 </ul>
 {% endif %}
 
-{{ post.helloworld() }}
 {{ post.html|safe }}
 
 
-{% if post.sub_pages |length > 0 %}
+{% if post.links["subpages"] |length > 0 %}
 <ul class="nav flex-column flex-sm-row" labeledby="inf_head">
   {% for d in post.sub_pages %}
     <li class="nav-item">
@@ -36,15 +36,29 @@
 </ul>
 {% endif %}
 
-{% if post.list_files |length > 0 %}
+{% if post.links["files"] |length > 0 %}
 
 <hr/>
 
 <b id="inf_head">Files:</b>
 <ul>
-  {% for d in post.list_files %}
+  {% for d in post.links.files %}
     <li>
-      <a href="{{d.url}}">{{d}} </a>
+      <a href="{{d.url}}">{{d.title}} </a>
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% if post.links["images"] |length > 0 %}
+
+<hr/>
+
+<b id="inf_head">Images:</b>
+<ul>
+  {% for d in post.links.images %}
+    <li>
+      <a href="{{d.url}}">{{d.title}} </a>
     </li>
   {% endfor %}
 </ul>

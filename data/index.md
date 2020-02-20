@@ -1,1 +1,1 @@
-title: title
+title: Stuff Sample

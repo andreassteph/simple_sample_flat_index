@@ -7,9 +7,9 @@
   <div class="row">
     <div class="col-12">
       <nav class="breadcrumb" style="background-color: #FFF">
-{% for b in post.breadcrumbs %}
-<a href="{#url_for('page',name=b.path)#}{{b.url}}" class="breadcrumb-item">{{b.title}} </a>
-{% endfor %}
+	{% for b in post.links.breadcrumbs %}
+	<a href="{#url_for('page',name=b.path)#}{{b.url}}" class="breadcrumb-item">{{b.title}} </a>
+	{% endfor %}
 
       </nav>
 
